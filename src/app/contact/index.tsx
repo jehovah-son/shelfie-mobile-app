@@ -1,16 +1,16 @@
 import { View, Text } from "react-native";
 import React from "react";
 import { Link, Stack } from "expo-router";
+import ThemedView from "@/components/ThemedView";
+import ThemedText from "@/components/ThemeText";
 
 export default function ContactPage() {
   return (
-    <View className="flex-1 items-center justify-center  container mx-auto">
+    <ThemedView className="flex-1 items-center justify-center  container mx-auto">
       <Stack.Screen options={{ title: "Contact", headerShown: true }} />
-      <Text>Contact</Text>
-      <Link href="/" className="mt-10 text-lg font-bold underline">
-        {" "}
-        home page
-      </Link>
-    </View>
+      <ThemedText title={true} className="text-lg font-bold">
+        Contact
+      </ThemedText>
+    </ThemedView>
   );
 }
