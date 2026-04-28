@@ -4,7 +4,7 @@ import HomeImg from "../../assets/img/favicon.png";
 
 export default function Home() {
   return (
-    <View className="flex-1 items-center justify-center bg-gray-200 container mx-auto">
+    <View className="flex-1 items-center justify-center container mx-auto">
       <Image
         source={HomeImg}
         alt="home"
@@ -16,6 +16,14 @@ export default function Home() {
       <Text className="mt-2 text-md font-semibold">
         The Number 1 Reading List App
       </Text>
+
+      <Link href="/about" className="mt-10 text-lg font-bold underline">
+        About page
+      </Link>
+
+      <Link href="/contact" className="mt-5 text-lg font-bold underline">
+        Contact page
+      </Link>
     </View>
   );
 }
