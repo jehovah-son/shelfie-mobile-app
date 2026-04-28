@@ -2,6 +2,7 @@ import { View, Text, Image } from "react-native";
 import { Link } from "expo-router";
 import HomeImg from "../../assets/img/favicon.png";
 import ThemedView from "@/components/ThemedView";
+import ThemedText from "@/components/ThemeText";
 
 export default function Home() {
   return (
@@ -12,18 +13,20 @@ export default function Home() {
         className=" w-52 h-52"
         resizeMode="contain"
       />
-      <Text className="text-2xl font-bold mt-5">Welcome to Shelfie App!</Text>
-      {/* This is how you navigate between screens */}
-      <Text className="mt-2 text-md font-semibold">
-        The Number 1 Reading List App
-      </Text>
+      <ThemedText title={true} className="text-2xl font-bold mt-5">
+        Welcome to Shelfie App!
+      </ThemedText>
 
-      <Link href="/about" className="mt-10 text-lg font-bold underline">
-        About page
+      <ThemedText className="mt-2 text-base font-semibold">
+        The Number 1 Reading List App
+      </ThemedText>
+
+      <Link href="/about" className="mt-10 text-lg font-semibold underline">
+        <ThemedText> About page</ThemedText>
       </Link>
 
       <Link href="/contact" className="mt-5 text-lg font-bold underline">
-        Contact page
+        <ThemedText> Contact page</ThemedText>
       </Link>
     </ThemedView>
   );
