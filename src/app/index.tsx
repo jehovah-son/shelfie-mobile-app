@@ -1,10 +1,11 @@
 import { View, Text, Image } from "react-native";
 import { Link } from "expo-router";
 import HomeImg from "../../assets/img/favicon.png";
+import ThemedView from "@/components/ThemedView";
 
 export default function Home() {
   return (
-    <View className="flex-1 items-center justify-center container mx-auto">
+    <ThemedView className="flex-1 items-center justify-center container mx-auto">
       <Image
         source={HomeImg}
         alt="home"
@@ -24,6 +25,6 @@ export default function Home() {
       <Link href="/contact" className="mt-5 text-lg font-bold underline">
         Contact page
       </Link>
-    </View>
+    </ThemedView>
   );
 }
