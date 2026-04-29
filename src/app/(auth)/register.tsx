@@ -2,6 +2,11 @@ import ThemedView from "@/components/ThemedView";
 import ThemedText from "@/components/ThemeText";
 import { Link, Stack } from "expo-router";
 import React from "react";
+import ThemeButtonProps from "@/components/ThemeButton";
+
+const handleSubmit = () => {
+  console.log("register submitted");
+};
 
 export default function Register() {
   return (
@@ -10,11 +15,13 @@ export default function Register() {
         Register to your account
       </ThemedText>
 
+      <ThemeButtonProps text="Register" onPress={handleSubmit} />
+
       <Link
         href="/login"
         className="mt-5 text-lg font-bold underline text-center"
       >
-        already have an account? Login here
+        <ThemedText> already have an account? Login here</ThemedText>
       </Link>
     </ThemedView>
   );

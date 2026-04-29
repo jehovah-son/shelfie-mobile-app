@@ -15,6 +15,7 @@ export default function RootLayout() {
           headerStyle: { backgroundColor: themeColors.navBackground },
           headerTintColor: themeColors.text,
           headerTitleStyle: { fontWeight: "bold" },
+          headerTitleAlign: "center",
         }}
       >
         <Stack.Screen name="index" options={{ title: "Home" }} />

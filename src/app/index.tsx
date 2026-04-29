@@ -21,7 +21,7 @@ export default function Home() {
         The Number 1 Reading List App
       </ThemedText>
 
-      <Link href="/login" className="mt-10 text-lg font-semibold underline">
+      <Link href="/login" className="mt-10 text-lg font-bold underline">
         <ThemedText> Login Page</ThemedText>
       </Link>
 

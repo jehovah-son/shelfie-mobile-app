@@ -10,6 +10,7 @@ export default function AuthLayout() {
         screenOptions={{
           headerShown: false,
           animation: "none",
+          headerTitleAlign: "center",
         }}
       ></Stack>
     </>
