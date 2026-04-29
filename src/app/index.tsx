@@ -25,7 +25,7 @@ export default function Home() {
         <ThemedText> Login Page</ThemedText>
       </Link>
 
-      <Link href="/register" className="mt-5 text-lg font-bold underline">
+      <Link href="/books" className="mt-5 text-lg font-bold underline">
         <ThemedText> Register page</ThemedText>
       </Link>
     </ThemedView>
