@@ -5,7 +5,10 @@ import { Link, Stack } from "expo-router";
 
 export default function Books() {
   return (
-    <ThemedView className="flex-1 items-center justify-center  container mx-auto">
+    <ThemedView
+      safe={true}
+      className="flex-1 items-center justify-center  container mx-auto"
+    >
       {/* <Stack.Screen
         options={{
           title: "books",

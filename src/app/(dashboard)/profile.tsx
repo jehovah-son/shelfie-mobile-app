@@ -5,7 +5,7 @@ import React from "react";
 
 export default function Profile() {
   return (
-    <ThemedView className="flex-1 items-center justify-center  container mx-auto">
+    <ThemedView safe={true} className="flex-1 items-center container mx-auto">
       {/* <Stack.Screen
         options={{
           title: "Profile",
