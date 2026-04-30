@@ -12,6 +12,7 @@ const handleSubmit = () => {
 
 export default function Register() {
   const [email, setEmail] = useState("");
+  const [passWord, setPassWord] = useState("");
 
   return (
     <ThemedView className="container mx-auto flex-1 justify-center items-center">
@@ -26,6 +27,15 @@ export default function Register() {
         keyBoardType="email-address"
         onChangeText={setEmail}
         value={email}
+      />
+      <ThemeTextInput
+        placeholder="Password"
+        style={{ width: "80%", marginBottom: 20 }}
+        className="mt-5"
+        keyBoardType="password"
+        onChangeText={setPassWord}
+        value={passWord}
+        secureTextEntry
       />
 
       <ThemeButtonProps text="Register" onPress={handleSubmit} />
