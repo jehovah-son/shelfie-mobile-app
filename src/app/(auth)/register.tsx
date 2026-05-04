@@ -3,6 +3,7 @@ import ThemedText from "@/components/ThemeText";
 import { Link, Stack } from "expo-router";
 import React, { useState } from "react";
 import ThemeButtonProps from "@/components/ThemeButton";
+import { userUser } from "../../../hooks/useUser";
 import {
   Keyboard,
   TextInput,
@@ -12,12 +13,19 @@ import {
 import ThemeTextInput from "@/components/ThemeTextInput";
 
 export default function Register() {
-  const handleSubmit = () => {
-    console.log("register submitted", email, passWord);
-  };
-
   const [email, setEmail] = useState("");
   const [passWord, setPassWord] = useState("");
+  const { user, register } = userUser();
+
+  const handleSubmit = async () => {
+    try {
+      await register(email, passWord);
+      console.log("register submitted", email, passWord);
+      // console.log("current user", user);
+    } catch (error) {
+      console.error("Registration error:", error);
+    }
+  };
 
   return (
     <TouchableWithoutFeedback onPress={Keyboard.dismiss}>

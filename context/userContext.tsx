@@ -1,4 +1,6 @@
 import { createContext, useState, ReactNode } from "react";
+import { account } from "../lib/appwrite";
+import { ID } from "appwrite";
 
 // Define what your Context provides
 interface UserContextType {
@@ -18,10 +20,26 @@ export function UserProvider({ children }: { children: ReactNode }) {
 
   async function login(email: string, passWord: string) {
     // Appwrite login logic will go here
+    try {
+      await account.createEmailPasswordSession(email, passWord);
+      const response = await account.get();
+      console.log("Login successful:", response);
+      setUser(response);
+    } catch (error) {
+      console.error("Login error:", error);
+    }
   }
 
   async function register(email: string, passWord: string) {
     // Appwrite registration logic will go here
+    try {
+      await account.create(ID.unique(), email, passWord);
+      //log the user in immediately after registration
+      await login(email, passWord);
+      console.log("Registration successful");
+    } catch (error) {
+      console.error("Registration error:", error);
+    }
   }
 
   async function logout() {
