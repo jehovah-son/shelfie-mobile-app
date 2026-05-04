@@ -17,7 +17,7 @@ export default function Login() {
   const handleSubmit = async () => {
     try {
       await login(email, passWord);
-      console.log("register submitted", email, passWord);
+      console.log("login submitted", email, passWord);
       // console.log("current user", user);
     } catch (error) {
       console.error("Registration error:", error);
