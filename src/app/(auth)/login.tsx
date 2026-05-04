@@ -6,12 +6,16 @@ import { Link, Stack } from "expo-router";
 import ThemeTextInput from "@/components/ThemeTextInput";
 import { useState } from "react";
 import { Keyboard, TouchableWithoutFeedback } from "react-native";
+import { userUser } from "../../../hooks/useUser";
 
 export default function Login() {
   const [email, setEmail] = useState("");
   const [passWord, setPassWord] = useState("");
 
+  const { user } = userUser();
+
   const handleSubmit = () => {
+    console.log("current user", user);
     console.log("login submitted", email, passWord);
   };
   return (

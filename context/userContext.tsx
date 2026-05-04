@@ -1,4 +1,4 @@
-import { createContext, useState, useContext, ReactNode } from "react";
+import { createContext, useState, ReactNode } from "react";
 
 // Define what your Context provides
 interface UserContextType {
