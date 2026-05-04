@@ -20,7 +20,11 @@ export default function Login() {
       console.log("login submitted", email, passWord);
       // console.log("current user", user);
     } catch (error) {
-      console.error("Registration error:", error);
+      if (error instanceof Error) {
+        throw new Error(`Login error: ${error.message}`);
+      }
+
+      throw new Error("An unknown login error occurred");
     }
   };
 

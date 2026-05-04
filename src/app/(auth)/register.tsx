@@ -23,7 +23,11 @@ export default function Register() {
       console.log("register submitted", email, passWord);
       // console.log("current user", user);
     } catch (error) {
-      console.error("Registration error:", error);
+      if (error instanceof Error) {
+        throw new Error(`Registration error: ${error.message}`);
+      }
+
+      throw new Error("An unknown registration error occurred");
     }
   };
 
