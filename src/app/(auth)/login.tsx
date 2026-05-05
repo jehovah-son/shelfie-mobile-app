@@ -4,14 +4,9 @@ import ThemedText from "@/components/ThemeText";
 import { Link, Stack } from "expo-router";
 import ThemeTextInput from "@/components/ThemeTextInput";
 import { useState } from "react";
-import {
-  Keyboard,
-  TouchableWithoutFeedback,
-  View,
-  Text,
-  ActivityIndicator,
-} from "react-native";
+import { Keyboard, TouchableWithoutFeedback, Text } from "react-native";
 import { userUser } from "../../../hooks/useUser";
+import ThemeLoader from "@/components/ThemeLoader";
 
 export default function Login() {
   const [email, setEmail] = useState("");
@@ -73,12 +68,7 @@ export default function Login() {
         >
           <ThemedText> Register your account</ThemedText>
         </Link>
-        <ActivityIndicator
-          size="large"
-          color="#ffff"
-          animating={user === null}
-          className=" -translate-x-1/2 -translate-y-1/2"
-        />
+        <ThemeLoader />
       </ThemedView>
     </TouchableWithoutFeedback>
   );
