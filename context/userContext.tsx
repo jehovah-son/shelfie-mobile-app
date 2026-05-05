@@ -1,4 +1,4 @@
-import { createContext, useState, ReactNode } from "react";
+import { createContext, useState, ReactNode, useEffect } from "react";
 import { account } from "../lib/appwrite";
 import { ID } from "appwrite";
 
@@ -8,6 +8,7 @@ interface UserContextType {
   login: (email: string, passWord: string) => Promise<void>;
   register: (email: string, passWord: string) => Promise<void>;
   logout: () => Promise<void>;
+  authChecked: boolean;
 }
 
 // Initialize with undefined, but cast it to the type
@@ -17,6 +18,7 @@ export const UserContext = createContext<UserContextType | undefined>(
 
 export function UserProvider({ children }: { children: ReactNode }) {
   const [user, setUser] = useState<any>(null);
+  const [authChecked, setAuthChecked] = useState(false);
 
   async function login(email: string, passWord: string) {
     // Appwrite login logic will go here
@@ -48,8 +50,26 @@ export function UserProvider({ children }: { children: ReactNode }) {
     setUser(null);
   }
 
+  useEffect(() => {
+    // Check if user is already logged in on component mount
+    const checkUser = async () => {
+      try {
+        const response = await account.get();
+        setUser(response);
+      } catch (error) {
+        console.log("No active session found");
+        setUser(null);
+      } finally {
+        setAuthChecked(true);
+      }
+    };
+    checkUser();
+  }, []);
+
   return (
-    <UserContext.Provider value={{ user, login, register, logout }}>
+    <UserContext.Provider
+      value={{ user, login, register, logout, authChecked }}
+    >
       {children}
     </UserContext.Provider>
   );

@@ -21,12 +21,15 @@ export default function Home() {
         The Number 1 Reading List App
       </ThemedText>
 
-      <Link href="/books" className="mt-10 text-lg font-bold underline">
+      <Link href="/login" className="mt-10 text-lg font-bold underline">
         <ThemedText> Login Page</ThemedText>
       </Link>
 
       <Link href="/register" className="mt-5 text-lg font-bold underline">
         <ThemedText> Register page</ThemedText>
+      </Link>
+      <Link href="/profile" className="mt-5 text-lg font-bold underline">
+        <ThemedText> Profile page</ThemedText>
       </Link>
     </ThemedView>
   );

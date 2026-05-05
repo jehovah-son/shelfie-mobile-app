@@ -6,7 +6,7 @@ import { userUser } from "../../../hooks/useUser";
 import ThemeButton from "@/components/ThemeButton";
 
 export default function Profile() {
-  const { logout } = userUser();
+  const { logout, user } = userUser();
 
   return (
     <ThemedView safe={true} className="flex-1 items-center container mx-auto">
@@ -18,7 +18,7 @@ export default function Profile() {
         }}
       /> */}
       <ThemedText title={true} className="text-lg font-bold">
-        Profile
+        Welcome, {user?.email}!
       </ThemedText>
 
       <ThemedText className="text-lg font-bold">
