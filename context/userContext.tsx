@@ -44,6 +44,8 @@ export function UserProvider({ children }: { children: ReactNode }) {
 
   async function logout() {
     // Appwrite logout logic will go here
+    await account.deleteSession("current");
+    setUser(null);
   }
 
   return (
