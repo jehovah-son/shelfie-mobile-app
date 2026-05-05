@@ -2,29 +2,32 @@ import ThemeButtonProps from "@/components/ThemeButton";
 import ThemedView from "@/components/ThemedView";
 import ThemedText from "@/components/ThemeText";
 import { Link, Stack } from "expo-router";
-
 import ThemeTextInput from "@/components/ThemeTextInput";
 import { useState } from "react";
-import { Keyboard, TouchableWithoutFeedback } from "react-native";
+import { Keyboard, TouchableWithoutFeedback, View, Text } from "react-native";
 import { userUser } from "../../../hooks/useUser";
 
 export default function Login() {
   const [email, setEmail] = useState("");
   const [passWord, setPassWord] = useState("");
+  const [error, setError] = useState(null);
 
   const { user, login } = userUser();
 
   const handleSubmit = async () => {
+    setError(null); // Clear previous errors
     try {
       await login(email, passWord);
       console.log("login submitted", email, passWord);
+      setEmail("");
+      setPassWord("");
       // console.log("current user", user);
-    } catch (error) {
-      if (error instanceof Error) {
-        throw new Error(`Login error: ${error.message}`);
-      }
-
-      throw new Error("An unknown login error occurred");
+    } catch (error: any) {
+      setError(
+        error.message || "An error occurred during login. Please try again.",
+      );
+      setEmail("");
+      setPassWord("");
     }
   };
 
@@ -53,6 +56,11 @@ export default function Login() {
         />
 
         <ThemeButtonProps text="Login" onPress={handleSubmit} />
+
+        {error && (
+          <Text className="text-red-500 text-center mb-4">{error}</Text>
+        )}
+
         <Link
           href="/register"
           className="mt-5 text-lg font-bold underline text-center"

@@ -25,8 +25,8 @@ export function UserProvider({ children }: { children: ReactNode }) {
       const response = await account.get();
       console.log("Login successful:", response);
       setUser(response);
-    } catch (error) {
-      console.error("Login error:", error);
+    } catch (error: any) {
+      console.error("Login error:", error.message || error);
     }
   }
 

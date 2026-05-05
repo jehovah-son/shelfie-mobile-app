@@ -4,11 +4,13 @@ import { Link, Stack } from "expo-router";
 import React, { useState } from "react";
 import ThemeButtonProps from "@/components/ThemeButton";
 import { userUser } from "../../../hooks/useUser";
+
 import {
   Keyboard,
   TextInput,
   TouchableWithoutFeedback,
   View,
+  Text,
 } from "react-native";
 import ThemeTextInput from "@/components/ThemeTextInput";
 
@@ -16,18 +18,20 @@ export default function Register() {
   const [email, setEmail] = useState("");
   const [passWord, setPassWord] = useState("");
   const { user, register } = userUser();
+  const [error, setError] = useState(null);
 
   const handleSubmit = async () => {
+    setError(null); // Clear previous errors
     try {
       await register(email, passWord);
       console.log("register submitted", email, passWord);
       // console.log("current user", user);
-    } catch (error) {
-      if (error instanceof Error) {
-        throw new Error(`Registration error: ${error.message}`);
-      }
-
-      throw new Error("An unknown registration error occurred");
+    } catch (error: any) {
+      setError(
+        error.message || "An error occurred during login. Please try again.",
+      );
+      setEmail("");
+      setPassWord("");
     }
   };
 
@@ -56,6 +60,10 @@ export default function Register() {
         />
 
         <ThemeButtonProps text="Register" onPress={handleSubmit} />
+
+        {error && (
+          <Text className="text-red-500 text-center mb-4">{error}</Text>
+        )}
 
         <Link
           href="/login"
