@@ -6,7 +6,6 @@ import ThemeTextInput from "@/components/ThemeTextInput";
 import { useState } from "react";
 import { Keyboard, TouchableWithoutFeedback, Text } from "react-native";
 import { userUser } from "../../../hooks/useUser";
-import ThemeLoader from "@/components/ThemeLoader";
 
 export default function Login() {
   const [email, setEmail] = useState("");
@@ -68,7 +67,6 @@ export default function Login() {
         >
           <ThemedText> Register your account</ThemedText>
         </Link>
-        <ThemeLoader />
       </ThemedView>
     </TouchableWithoutFeedback>
   );
