@@ -2,13 +2,14 @@ import { StatusBar } from "expo-status-bar";
 import React from "react";
 import { Stack } from "expo-router";
 import { userUser } from "../../../hooks/useUser";
+import GuestOnly from "@/components/auth/GuestOnly";
 
 export default function AuthLayout() {
   const { user } = userUser();
 
   console.log("AuthLayout user", user);
   return (
-    <>
+    <GuestOnly>
       <StatusBar style="auto" />
       <Stack
         screenOptions={{
@@ -17,6 +18,6 @@ export default function AuthLayout() {
           headerTitleAlign: "center",
         }}
       ></Stack>
-    </>
+    </GuestOnly>
   );
 }
