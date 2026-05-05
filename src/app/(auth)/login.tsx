@@ -4,7 +4,13 @@ import ThemedText from "@/components/ThemeText";
 import { Link, Stack } from "expo-router";
 import ThemeTextInput from "@/components/ThemeTextInput";
 import { useState } from "react";
-import { Keyboard, TouchableWithoutFeedback, View, Text } from "react-native";
+import {
+  Keyboard,
+  TouchableWithoutFeedback,
+  View,
+  Text,
+  ActivityIndicator,
+} from "react-native";
 import { userUser } from "../../../hooks/useUser";
 
 export default function Login() {
@@ -67,6 +73,12 @@ export default function Login() {
         >
           <ThemedText> Register your account</ThemedText>
         </Link>
+        <ActivityIndicator
+          size="large"
+          color="#ffff"
+          animating={user === null}
+          className=" -translate-x-1/2 -translate-y-1/2"
+        />
       </ThemedView>
     </TouchableWithoutFeedback>
   );
