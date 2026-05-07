@@ -3,11 +3,16 @@ import { Pressable, Text, View } from "react-native";
 import { Colors } from "../../constants/Colors";
 
 type ThemeButtonPropsType = {
-  text: string;
+  text?: string;
   onPress?: () => void;
+  disabled?: boolean;
 };
 
-export default function ThemeButton({ text, onPress }: ThemeButtonPropsType) {
+export default function ThemeButton({
+  text,
+  onPress,
+  disabled,
+}: ThemeButtonPropsType) {
   return (
     <Pressable
       onPress={onPress ?? (() => {})} // 👈 safe default

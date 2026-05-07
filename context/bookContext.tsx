@@ -7,12 +7,11 @@ const DataBase_ID = "69fb1774001b99a2c366";
 const Collection_ID = "books";
 
 export const BookContext = createContext({
-  //  fetchBooks: async () => {},
-  //  fetchBooksById: async (id: string) => {},
-  //  createBook: async (data: any) => {},
-  //  deleteBook: async (id: string) => {},
-  //  books: [] as any[],
-  //  setBooks: (books: any[]) => {},
+  fetchBooks: async () => {},
+  fetchBooksById: async (id: string) => {},
+  createBook: async (data: any) => {},
+  deleteBook: async (id: string) => {},
+  books: [] as any[],
 });
 
 export function BookProvider({ children }: { children: ReactNode }) {
@@ -65,7 +64,7 @@ export function BookProvider({ children }: { children: ReactNode }) {
     <BookContext.Provider
       value={{
         books,
-        setBooks,
+
         fetchBooks,
         fetchBooksById,
         createBook,
