@@ -79,7 +79,6 @@ export function BookProvider({ children }: { children: ReactNode }) {
     <BookContext.Provider
       value={{
         books,
-
         fetchBooks,
         fetchBooksById,
         createBook,
