@@ -1,6 +1,6 @@
-import { createContext, ReactNode, useState } from "react";
+import { createContext, ReactNode, useEffect, useState } from "react";
 import { databases } from "../lib/appwrite";
-import { ID, Permission, Role } from "appwrite";
+import { ID, Permission, Query, Role } from "appwrite";
 import { userUser } from "../hooks/useUser";
 
 const DataBase_ID = "69fb1774001b99a2c366";
@@ -20,12 +20,19 @@ export function BookProvider({ children }: { children: ReactNode }) {
 
   async function fetchBooks() {
     try {
+      const response = await databases.listDocuments(
+        DataBase_ID,
+        Collection_ID,
+        [Query.equal("userId", user.$id)],
+      );
+      setBooks(response.documents);
+      console.log("Fetched books:", response.documents);
     } catch (error) {
       console.log("Error fetching books:", error);
     }
   }
 
-  async function fetchBooksById() {
+  async function fetchBooksById(id: string) {
     try {
     } catch (error) {
       console.log("Error fetching book by ID:", error);
@@ -59,6 +66,14 @@ export function BookProvider({ children }: { children: ReactNode }) {
       console.log("Error deleting book:", error);
     }
   }
+
+  useEffect(() => {
+    if (user) {
+      fetchBooks();
+    } else {
+      setBooks([]);
+    }
+  }, [user]);
 
   return (
     <BookContext.Provider
