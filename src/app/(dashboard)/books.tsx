@@ -22,13 +22,13 @@ export default function Books() {
         Your Reading List
       </ThemedText>
       <FlatList
-        className="mt-10"
+        className="w-full"
         data={books}
         keyExtractor={(item) => item.$id}
         contentContainerStyle={``}
         renderItem={({ item }) => (
           <Pressable>
-            <ThemedCard>
+            <ThemedCard className="mt-3 w-full">
               <ThemedText className="font-bold text-lg ">
                 {item.title}
               </ThemedText>
